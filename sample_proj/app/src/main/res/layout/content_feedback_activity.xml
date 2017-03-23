@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="trainedge.sample_proj.Feedback_activity"
+    tools:showIn="@layout/activity_feedback_activity">
+
+    <RelativeLayout
+        android:layout_width="412dp"
+        android:layout_height="518dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <TextView
+            android:id="@+id/TV_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="I'm telling you about an Aap ..."
+            android:textAlignment="viewStart"
+            android:textSize="24sp"
+            android:textStyle="italic"
+            tools:ignore="HardcodedText,ObsoleteLayoutParam" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:fontFamily="sans-serif"
+            android:padding="5dp"
+            android:text="Description"
+            android:textColor="?attr/colorPrimaryDark"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="16dp"
+            tools:ignore="HardcodedText,UnusedAttribute" />
+
+        <EditText
+            android:id="@+id/editText4"
+            style="@style/Widget.AppCompat.AutoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView5"
+            android:layout_margin="5dp"
+            android:layout_marginTop="50dp"
+            android:ems="10"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:lines="10"
+            android:text="Feedback Details"
+            tools:text="Feedback Details"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/editText4"
+            android:layout_margin="5dp"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:text="Your Email"
+            tools:ignore="HardcodedText" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/editText5"
+            android:layout_margin="5dp"
+            android:checked="true"
+            android:duplicateParentState="false"
+            android:padding="5dp"
+            android:paddingBottom="10dp"
+            android:paddingEnd="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingStart="15dp"
+            android:paddingTop="5dp"
+            android:text="Would you like an email responce?"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/checkBox"
+            android:layout_marginTop="23dp"
+            android:padding="5dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            android:paddingTop="5dp"
+            android:text="Send Feedback"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText" />
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
