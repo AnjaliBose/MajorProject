@@ -34,13 +34,14 @@
         android:layout_height="44dp"
         android:layout_marginLeft="2dp"
         android:layout_marginTop="10dp"
-        android:paddingRight="5dp"
+        android:paddingRight="10dp"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp"
         tools:ignore="ContentDescription,RtlHardcoded,RtlSymmetry,VectorDrawableCompat" />
 
     <include
         android:id="@+id/include"
         layout="@layout/content_feedback_activity"
-        android:layout_width="wrap_content" />
+        android:layout_width="match_parent"
+        tools:ignore="IncludeLayoutParam" />
 
 </android.support.design.widget.CoordinatorLayout>
