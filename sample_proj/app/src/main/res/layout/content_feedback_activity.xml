@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="5dp"
-            android:text="I'm telling you about an Aap ..."
+            android:text="I'm telling you about an App ..."
             android:textAlignment="viewStart"
             android:textSize="24sp"
             android:textStyle="italic"

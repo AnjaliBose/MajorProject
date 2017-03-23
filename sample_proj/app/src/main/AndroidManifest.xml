@@ -17,17 +17,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".Feedback_activity"
             android:label="@string/title_activity_feedback_activity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Feed_back_activity"
             android:label="@string/title_activity_feed_back_activity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".about"></activity>
     </application>
 
 </manifest>
