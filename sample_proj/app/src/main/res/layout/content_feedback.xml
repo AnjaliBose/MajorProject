@@ -5,9 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="trainedge.sample_proj.Feedback_activity"
-    tools:showIn="@layout/activity_feedback_activity">
-
+    tools:context="trainedge.sample_proj.FeedbackActivity"
+    tools:showIn="@layout/activity_feedback">
     <RelativeLayout
         android:id="@+id/RLT"
         android:layout_width="368dp"

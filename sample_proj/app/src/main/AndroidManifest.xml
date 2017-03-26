@@ -17,14 +17,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Feedback_activity"
-            android:label="@string/title_activity_feedback_activity"
-            android:theme="@style/AppTheme.NoActionBar" />
-
+            android:name=".FeedbackActivity"
+            android:label="@string/title_activity_feedback"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="trainedge.sample_proj.MainActivity" />
+        </activity>
         <activity
-            android:name=".About_activity"
-            android:label="@string/title_activity_about_activity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".AboutActivity"
+            android:label="@string/title_activity_about"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="trainedge.sample_proj.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
