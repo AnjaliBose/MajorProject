@@ -19,7 +19,7 @@
         tools:layout_editor_absoluteX="8dp">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/FbBtn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -27,22 +27,22 @@
             android:background="@drawable/fb" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/GBtn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/button3"
-            android:layout_alignStart="@+id/button3"
-            android:layout_below="@+id/button3"
+            android:layout_alignLeft="@+id/FbBtn1"
+            android:layout_alignStart="@+id/FbBtn1"
+            android:layout_below="@+id/FbBtn1"
             android:layout_marginTop="13dp"
             android:background="@drawable/google" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/TBtn3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/button4"
-            android:layout_alignStart="@+id/button4"
-            android:layout_below="@+id/button4"
+            android:layout_alignLeft="@+id/GBtn2"
+            android:layout_alignStart="@+id/GBtn2"
+            android:layout_below="@+id/GBtn2"
             android:layout_marginTop="14dp"
             android:background="@drawable/qw" />
 
@@ -50,7 +50,7 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/button3"
+            android:layout_above="@+id/FbBtn1"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="54dp"
             android:fontFamily="cursive"
@@ -67,7 +67,13 @@
             android:layout_above="@+id/textView3"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="55dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginRight="21dp"
             android:fontFamily="cursive"
+            android:paddingBottom="5dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:paddingTop="5dp"
             android:text="Ready To Get Started?"
             android:textColor="@android:color/background_light"
             android:textSize="38sp"
