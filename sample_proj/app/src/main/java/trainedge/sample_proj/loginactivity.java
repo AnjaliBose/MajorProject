@@ -7,12 +7,14 @@ import android.support.design.widget.BaseTransientBottomBar;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,8 +28,7 @@ public class loginactivity extends AppCompatActivity implements GoogleApiClient.
 
     public static final int RC_SIGN_IN= 7283;
     public static final String TAG = "loginactivity";
-    private ImageView ivGoogleSignIn;
-    private GooogleApiClient mGoogleApiClient;
+    public static final Api<GoogleSignInOptions> GOOGLE_SIGN_IN_OPTIONS_API = null;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -37,7 +38,8 @@ public class loginactivity extends AppCompatActivity implements GoogleApiClient.
         setContentView(R.layout.activity_loginactivity);
          mAuth= FirebaseAuth.getInstance();
 
-        ivGoogleSignIn = (ImageView) findViewById(R.id.ivGoogleSignIn);
+        final View viewById = findViewById(R.id.ivGoogleSignIn);
+        final Button ivGoogleSignIn = (Button) viewById;
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -46,9 +48,10 @@ public class loginactivity extends AppCompatActivity implements GoogleApiClient.
 
         // Build a GoogleApiClient with access to the Google Sign-In API and the
 // options specified by gso.
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
+        assert false;
+        GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .addApi(GOOGLE_SIGN_IN_OPTIONS_API, gso)
                 .build();
 
         //importent part
@@ -65,11 +68,6 @@ public class loginactivity extends AppCompatActivity implements GoogleApiClient.
                 }
     }
 
-    private void signIn() {
-
-        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -153,19 +151,22 @@ public class loginactivity extends AppCompatActivity implements GoogleApiClient.
                                 // signed in user can be handled in the listener.
                                 if (!task.isSuccessful()) {
                                     Log.w(TAG, "signInWithCredential", task.getException());
-                                    Toast.makeText(loginactivity.this.clone().this, "Authentication failed.",
+                                    Toast.makeText(loginactivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
-                        });
-            }
+            };
 
-};}
+}
 
-    private void show() {
-    }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Snackbar.make(ivGoogleSignIn,"not connected to internet", BaseTransientBottomBar.LENGTH_INDEFINITE).show();
+    }};}
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
     }
+}
