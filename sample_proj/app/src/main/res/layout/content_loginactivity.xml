@@ -19,7 +19,7 @@
         tools:layout_editor_absoluteX="8dp">
 
         <Button
-            android:id="@+id/FbBtn1"
+            android:id="@+id/ivGoogleSignIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -30,9 +30,9 @@
             android:id="@+id/GBtn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/FbBtn1"
-            android:layout_alignStart="@+id/FbBtn1"
-            android:layout_below="@+id/FbBtn1"
+            android:layout_alignLeft="@+id/ivGoogleSignIn"
+            android:layout_alignStart="@+id/ivGoogleSignIn"
+            android:layout_below="@+id/ivGoogleSignIn"
             android:layout_marginTop="13dp"
             android:background="@drawable/twnew" />
 
@@ -50,7 +50,7 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/FbBtn1"
+            android:layout_above="@+id/ivGoogleSignIn"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="54dp"
             android:fontFamily="cursive"
