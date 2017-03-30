@@ -34,10 +34,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="trainedge.sample_proj.MainActivity" />
         </activity>
-        <activity
-            android:name=".loginactivity"
-            android:label="@string/title_activity_loginactivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
