@@ -37,7 +37,7 @@
             android:background="@drawable/twnew" />
 
         <Button
-            android:id="@+id/TBtn3"
+            android:id="@+id/login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/GBtn2"
@@ -79,6 +79,7 @@
             android:textSize="38sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
