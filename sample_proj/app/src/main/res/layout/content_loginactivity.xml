@@ -54,7 +54,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="54dp"
             android:fontFamily="cursive"
-            android:text="Sign In With.."
+            android:text="Sign In With....."
             android:textColor="@android:color/background_light"
             android:textSize="28sp"
             android:textStyle="bold"

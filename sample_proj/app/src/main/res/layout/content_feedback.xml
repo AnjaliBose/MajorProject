@@ -21,68 +21,45 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="5dp"
-            android:text="I'm telling you about an App ..."
+            android:text="Tell us about our app.... Any kind of feedback is acceptable to us..."
             android:textAlignment="viewStart"
             android:textSize="24sp"
             android:textStyle="italic"
             tools:ignore="HardcodedText,ObsoleteLayoutParam" />
-
-        <TextView
-            android:id="@+id/TV_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:fontFamily="sans-serif"
-            android:padding="5dp"
-            android:text="Description"
-            android:textColor="?attr/colorPrimaryDark"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="HardcodedText,UnusedAttribute"
-            tools:layout_editor_absoluteX="16dp" />
 
         <EditText
             android:id="@+id/TV_3"
             style="@style/Widget.AppCompat.AutoCompleteTextView"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/TV_2"
-            android:layout_margin="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="50dp"
             android:ems="10"
             android:gravity="top"
             android:inputType="textMultiLine"
             android:lines="10"
-            android:text="Feedback Details"
+            android:text="Write Your Suggestions"
             tools:ignore="HardcodedText,RtlHardcoded"
-            tools:text="Feedback Details" />
+            tools:text="Write Your Suggestions"
+            android:layout_below="@+id/editText5"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <EditText
             android:id="@+id/editText5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/TV_3"
-            android:layout_margin="5dp"
             android:ems="10"
             android:inputType="textEmailAddress"
             android:text="Your Email"
-            tools:ignore="HardcodedText,RtlHardcoded" />
+            tools:ignore="HardcodedText,RtlHardcoded"
+            android:layout_below="@+id/TV_1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="26dp" />
 
         <CheckBox
             android:id="@+id/checkBox"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/editText5"
-            android:layout_margin="5dp"
             android:checked="true"
             android:duplicateParentState="false"
             android:padding="5dp"
@@ -92,26 +69,26 @@
             android:paddingRight="25dp"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
-            android:text="Would you like an email responce?"
+            android:text="Would you like an email response?"
             android:textSize="20sp"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText"
+            android:layout_above="@+id/button"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/checkBox"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="23dp"
             android:padding="5dp"
             android:paddingEnd="10dp"
             android:paddingStart="10dp"
             android:paddingTop="5dp"
             android:text="Send Feedback"
             android:textSize="18sp"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/checkBox"
+            android:layout_alignStart="@+id/checkBox" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
