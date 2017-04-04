@@ -2,12 +2,10 @@ package trainedge.sample_proj;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BaseTransientBottomBar;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -34,21 +32,30 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.TwitterAuthProvider;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
-/**
- * Created by Lenovo on 30-03-17.
- */
+import twitter4j.TwitterException;
+
 
 public class loginactivity extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
 
     public static final int RC_SIGN_IN = 7856;
     public static final String TAG = "loginactivity";
+    public static final int FACEBOOK = 2;
+    public static final int TWIITER = 3;
     private Button btngoogle;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private GoogleApiClient mGoogleApiClient;
     private LoginButton loginButton;
     private CallbackManager mCallbackManager;
+
+    private TwitterLoginButton mLoginButton;
+    private int clickOn = 0;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,12 +70,14 @@ public class loginactivity extends AppCompatActivity implements View.OnClickList
                 .requestEmail()
                 .build();
 
+
         // Build a GoogleApiClient with access to the Google Sign-In API and the
 // options specified by gso.
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
+
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -116,6 +125,25 @@ public class loginactivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
+        mLoginButton = (TwitterLoginButton) findViewById(R.id.button_twitter_login);
+
+        mLoginButton.setCallback(new Callback<TwitterSession>() {
+            @Override
+            public void success(Result<TwitterSession> result) {
+                Log.d(TAG, "twitterLogin:success" + result);
+                handleTwitterSession(result.data);
+                clickOn=TWIITER;
+            }
+
+            private void handleTwitterSession(TwitterSession data) {
+            }
+
+            @Override
+            public void failure(com.twitter.sdk.android.core.TwitterException exception) {
+                Log.w(TAG, "twitterLogin:failure", exception);}
+
+        });
+
     }
 
     private void signIn() {
@@ -138,9 +166,13 @@ public class loginactivity extends AppCompatActivity implements View.OnClickList
                 // Google Sign In failed, update UI appropriately
                 // ...
             }
+        } else if (clickOn == FACEBOOK) {
+            // Pass the activity result back to the Facebook SDK
+            mCallbackManager.onActivityResult(requestCode, resultCode, data);
+        } else if (clickOn == TWIITER) {
+            // Pass the activity result to the Twitter login button.
+            mLoginButton.onActivityResult(requestCode, resultCode, data);
         }
-        // Pass the activity result back to the Facebook SDK
-        mCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
 
@@ -201,22 +233,48 @@ public class loginactivity extends AppCompatActivity implements View.OnClickList
 
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
 
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "signInWithCredential", task.getException());
-                            Toast.makeText(loginactivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
+                // If sign in fails, display a message to the user. If sign in succeeds
+                // the auth state listener will be notified and logic to handle the
+                // signed in user can be handled in the listener.
+                if (!task.isSuccessful()) {
+                    Log.w(TAG, "signInWithCredential", task.getException());
+                    Toast.makeText(loginactivity.this, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show();
+                }
 
-                        // ...
-                    }
-                });
+                // ...
+            }
+        });
+    }
+
+    private void handleTwitterSession(TwitterSession session) {
+        Log.d(TAG, "handleTwitterSession:" + session);
+
+        AuthCredential credential = TwitterAuthProvider.getCredential(
+                session.getAuthToken().token,
+                session.getAuthToken().secret);
+
+        mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
+
+                // If sign in fails, display a message to the user. If sign in succeeds
+                // the auth state listener will be notified and logic to handle the
+                // signed in user can be handled in the listener.
+                if (!task.isSuccessful()) {
+                    Log.w(TAG, "signInWithCredential", task.getException());
+                    Toast.makeText(loginactivity.this, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+                // ...
+            }
+        });
     }
 }
 
