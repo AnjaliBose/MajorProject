@@ -54,8 +54,11 @@ public class loginactivity extends AppCompatActivity implements View.OnClickList
     private LoginButton loginButton;
     private CallbackManager mCallbackManager;
 
+<<<<<<< HEAD
+=======
     private TwitterLoginButton mLoginButton;
     private int clickOn = 0;
+>>>>>>> 4fb7566fd4c66402f0ab4688858c6fe1bb7f3624
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,6 +67,7 @@ public class loginactivity extends AppCompatActivity implements View.OnClickList
         mAuth = FirebaseAuth.getInstance();
         btngoogle = (Button) findViewById(R.id.ivGoogleSignIn);
         btngoogle.setOnClickListener(this);
+
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -71,6 +75,10 @@ public class loginactivity extends AppCompatActivity implements View.OnClickList
                 .build();
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4fb7566fd4c66402f0ab4688858c6fe1bb7f3624
         // Build a GoogleApiClient with access to the Google Sign-In API and the
 // options specified by gso.
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -97,7 +105,11 @@ public class loginactivity extends AppCompatActivity implements View.OnClickList
             }
         };
 
+
+
+
         // final line
+
 
 
         // facebook setup

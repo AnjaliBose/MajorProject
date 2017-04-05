@@ -1,5 +1,6 @@
 package trainedge.sample_proj;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -80,9 +81,10 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_task) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            startActivity(new Intent(this, CreateTask.class));
+        } else if (id == R.id.nav_view) {
 
         } else if (id == R.id.nav_slideshow) {
 
