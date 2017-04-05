@@ -54,7 +54,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CreateTask"
+            android:name=".HomeActivity"
             android:label="@string/title_activity_create_task"
             android:parentActivityName=".HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
