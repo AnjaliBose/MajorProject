@@ -82,10 +82,13 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_task) {
-            // Handle the camera action
+           // move too createTask page
             startActivity(new Intent(this, CreateTask.class));
         } else if (id == R.id.nav_view) {
 
+           // Intent createintend = new Intent(HomeActivity.this,CreateTask.class);
+           // startActivity(createintend);
+           
         } else if (id == R.id.nav_satting) {
 
         } else if (id == R.id.nav_history) {

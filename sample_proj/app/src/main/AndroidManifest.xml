@@ -54,7 +54,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeActivity"
+            android:name=".CreateTask"
             android:label="@string/title_activity_create_task"
             android:parentActivityName=".HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -62,6 +62,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="trainedge.sample_proj.HomeActivity" />
         </activity>
+        <activity
+            android:name=".HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
