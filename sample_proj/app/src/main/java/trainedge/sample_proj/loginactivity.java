@@ -54,11 +54,8 @@ public class loginactivity extends AppCompatActivity implements View.OnClickList
     private LoginButton loginButton;
     private CallbackManager mCallbackManager;
 
-<<<<<<< HEAD
-=======
     private TwitterLoginButton mLoginButton;
     private int clickOn = 0;
->>>>>>> 4fb7566fd4c66402f0ab4688858c6fe1bb7f3624
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,10 +72,6 @@ public class loginactivity extends AppCompatActivity implements View.OnClickList
                 .build();
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4fb7566fd4c66402f0ab4688858c6fe1bb7f3624
         // Build a GoogleApiClient with access to the Google Sign-In API and the
 // options specified by gso.
         mGoogleApiClient = new GoogleApiClient.Builder(this)

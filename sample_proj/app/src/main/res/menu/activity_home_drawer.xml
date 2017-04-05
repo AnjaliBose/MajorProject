@@ -17,24 +17,21 @@
             android:title="Setting" />
     </group>
 
+    <item
+        android:id="@+id/nav_history"
+        android:icon="@drawable/ic_menu_slideshow"
+        android:title="History" />
     <item android:title="Communication">
         <menu>
+            <item
+                android:id="@+id/nav_feed"
+                android:icon="@android:drawable/btn_star_big_on"
+                android:title="Feedback" />
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
         </menu>
     </item>
-    <item
-        android:id="@+id/nav_slideshow"
-        android:icon="@drawable/ic_menu_slideshow"
-        android:title="History" />
-    <item
-        android:icon="@android:drawable/btn_star_big_on"
-        android:title="Feedback" />
 
 </menu>
