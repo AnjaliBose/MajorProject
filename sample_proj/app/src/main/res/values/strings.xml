@@ -14,4 +14,5 @@
 
     <string name="facebook_app_id">249543848782703</string>
     <string name="fb_login_protocol_scheme">fb249543848782703</string>
+    <string name="title_activity_create_task">Create Task</string>
 </resources>
