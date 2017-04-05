@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/boxuu"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="trainedge.sample_proj.FeedbackActivity"
     tools:showIn="@layout/activity_feedback">
@@ -25,9 +25,9 @@
             android:padding="5dp"
 
             android:text="Please tell us what do you think about GeoFi...  Any kind of feedback is highly appreciated..."
-            android:textColor="@color/dgts__text_dark"
+            android:textColor="@android:color/black"
 
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="italic"
             tools:ignore="HardcodedText,ObsoleteLayoutParam" />
 
@@ -44,7 +44,7 @@
             android:inputType="textMultiLine"
             android:lines="10"
             android:text="Write Your Suggestions"
-            android:textColor="@color/com_facebook_share_button_text_color"
+            android:textColor="@android:color/black"
             tools:ignore="HardcodedText,RtlHardcoded"
             tools:text="Write Your Suggestions" />
 
@@ -58,11 +58,12 @@
             android:layout_marginTop="26dp"
             android:ems="10"
             android:inputType="textEmailAddress"
+            android:selectAllOnFocus="false"
             android:text="Your Email"
-            android:textColor="@color/com_facebook_share_button_text_color"
+
+            android:textColor="@android:color/black"
 
             android:textStyle="bold|italic"
-
             tools:ignore="HardcodedText,RtlHardcoded" />
 
         <CheckBox
@@ -84,6 +85,7 @@
             android:paddingStart="15dp"
             android:paddingTop="5dp"
             android:text="Would you like an email response?"
+            android:textColor="@android:color/black"
             android:textSize="20sp"
             tools:ignore="HardcodedText" />
 
@@ -102,5 +104,6 @@
             android:text="Send Feedback"
             android:textSize="18sp"
             tools:ignore="HardcodedText" />
+
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
