@@ -88,12 +88,15 @@ public class HomeActivity extends AppCompatActivity
 
            // Intent createintend = new Intent(HomeActivity.this,CreateTask.class);
            // startActivity(createintend);
-           
-        } else if (id == R.id.nav_satting) {
+
+        } else if (id == R.id.nav_about) {
+            startActivity(new Intent(this, AboutActivity.class));
+
 
         } else if (id == R.id.nav_history) {
 
         } else if (id == R.id.nav_feed) {
+            startActivity(new Intent(this, FeedbackActivity.class));
 
         } else if (id == R.id.nav_share) {
 
