@@ -17,9 +17,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:paddingTop="5dp"
-        android:text="GeoFi App for Android Phone"
-        android:textColor="?android:attr/actionMenuTextColor"
-        android:textSize="16sp"
+        android:text="GeoFi  for  Android "
+        android:textColor="?android:attr/colorControlActivated"
+        android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText,RtlHardcoded" />

@@ -21,8 +21,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="5dp"
-            android:text="Tell us about our app.... Any kind of feedback is acceptable to us..."
+            android:text="Please tell us what do you think about GeoFi...  Any kind of feedback is highly appreciated..."
             android:textAlignment="viewStart"
+            android:textColor="@color/dgts__text_dark"
             android:textSize="24sp"
             android:textStyle="italic"
             tools:ignore="HardcodedText,ObsoleteLayoutParam" />
@@ -32,34 +33,40 @@
             style="@style/Widget.AppCompat.AutoCompleteTextView"
             android:layout_width="match_parent"
             android:layout_height="150dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/editText5"
             android:ems="10"
             android:gravity="top"
             android:inputType="textMultiLine"
             android:lines="10"
             android:text="Write Your Suggestions"
+            android:textColor="@color/common_google_signin_btn_text_light_default"
             tools:ignore="HardcodedText,RtlHardcoded"
-            tools:text="Write Your Suggestions"
-            android:layout_below="@+id/editText5"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            tools:text="Write Your Suggestions" />
 
         <EditText
             android:id="@+id/editText5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/TV_1"
+            android:layout_marginTop="26dp"
             android:ems="10"
             android:inputType="textEmailAddress"
             android:text="Your Email"
-            tools:ignore="HardcodedText,RtlHardcoded"
-            android:layout_below="@+id/TV_1"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="26dp" />
+            android:textColor="@color/common_google_signin_btn_text_light_default"
+            tools:ignore="HardcodedText,RtlHardcoded" />
 
         <CheckBox
             android:id="@+id/checkBox"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_above="@+id/button"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="30dpdp"
             android:checked="true"
             android:duplicateParentState="false"
             android:padding="5dp"
@@ -71,24 +78,22 @@
             android:paddingTop="5dp"
             android:text="Would you like an email response?"
             android:textSize="20sp"
-            tools:ignore="HardcodedText"
-            android:layout_above="@+id/button"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/checkBox"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/checkBox"
+            android:layout_marginBottom="60dp"
             android:padding="5dp"
             android:paddingEnd="10dp"
             android:paddingStart="10dp"
             android:paddingTop="5dp"
             android:text="Send Feedback"
             android:textSize="18sp"
-            tools:ignore="HardcodedText"
-            android:layout_alignParentBottom="true"
-            android:layout_alignLeft="@+id/checkBox"
-            android:layout_alignStart="@+id/checkBox" />
+            tools:ignore="HardcodedText" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
