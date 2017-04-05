@@ -4,19 +4,15 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_task"
             android:icon="@drawable/ic_mode_edit_black_24dp"
             android:title="Create Task" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_view"
             android:icon="@drawable/ic_menu_gallery"
             android:title="View Reminder" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="History" />
-        <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_satting"
             android:icon="@drawable/ic_menu_manage"
             android:title="Setting" />
     </group>
@@ -33,6 +29,10 @@
                 android:title="Send" />
         </menu>
     </item>
+    <item
+        android:id="@+id/nav_slideshow"
+        android:icon="@drawable/ic_menu_slideshow"
+        android:title="History" />
     <item
         android:icon="@android:drawable/btn_star_big_on"
         android:title="Feedback" />
