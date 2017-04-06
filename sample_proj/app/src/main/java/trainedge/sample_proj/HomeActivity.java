@@ -1,6 +1,7 @@
 package trainedge.sample_proj;
 
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,6 +17,8 @@ import android.view.MenuItem;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private View viewById;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,9 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        viewById = findViewById(R.id.calendarView);
+        View calendar= viewById;
     }
 
     @Override
@@ -69,6 +75,8 @@ public class HomeActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
+
             return true;
         }
 
@@ -99,6 +107,7 @@ public class HomeActivity extends AppCompatActivity
             startActivity(new Intent(this, FeedbackActivity.class));
 
         } else if (id == R.id.nav_share) {
+            startActivity(new Intent(this, SettingsActivity.class));
 
         }
 
