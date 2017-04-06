@@ -4,17 +4,17 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_task"
-            android:icon="@drawable/ic_mode_edit_black_24dp"
-            android:title="Create Task" />
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="About" />
         <item
             android:id="@+id/nav_view"
             android:icon="@drawable/ic_menu_gallery"
             android:title="View Reminder" />
         <item
-            android:id="@+id/nav_about"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="About" />
+            android:id="@+id/nav_task"
+            android:icon="@drawable/ic_mode_edit_black_24dp"
+            android:title="Task Share" />
     </group>
 
     <item

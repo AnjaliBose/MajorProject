@@ -22,7 +22,7 @@
         <SearchView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/tw__medium_gray" />
+            android:background="@color/com_facebook_button_background_color_selected" />
 
     </android.support.design.widget.AppBarLayout>
 

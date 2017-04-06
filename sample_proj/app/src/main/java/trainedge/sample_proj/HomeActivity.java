@@ -14,11 +14,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CalendarView;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private View viewById;
+    private CalendarView calendarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +27,19 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        calendarView = (CalendarView) findViewById(R.id.calendarView);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                long date = calendarView.getDate();
+                Intent intent = new Intent(HomeActivity.this, CreateTask.class);
+                intent.putExtra("trainedge.sample_proj.key_date", date);
+                startActivity(intent);
+
             }
         });
 
@@ -45,8 +52,7 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        viewById = findViewById(R.id.calendarView);
-        View calendar= viewById;
+
     }
 
     @Override
@@ -90,12 +96,12 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_task) {
-           // move too createTask page
+            // move too createTask page
             startActivity(new Intent(this, CreateTask.class));
         } else if (id == R.id.nav_view) {
 
-           // Intent createintend = new Intent(HomeActivity.this,CreateTask.class);
-           // startActivity(createintend);
+            // Intent createintend = new Intent(HomeActivity.this,CreateTask.class);
+            // startActivity(createintend);
 
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(this, AboutActivity.class));
@@ -107,6 +113,9 @@ public class HomeActivity extends AppCompatActivity
             startActivity(new Intent(this, FeedbackActivity.class));
 
         } else if (id == R.id.nav_share) {
+            startActivity(new Intent(this, SettingsActivity.class));
+
+        } else if (id == R.id.fab) {
             startActivity(new Intent(this, SettingsActivity.class));
 
         }
