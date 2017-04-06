@@ -21,13 +21,15 @@
             android:id="@+id/TV_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
             android:layout_weight="1"
             android:padding="5dp"
 
-            android:text="Please tell us what do you think about GeoFi...  Any kind of feedback is highly appreciated..."
-            android:textColor="@android:color/black"
-
-            android:textSize="20sp"
+            android:text="Please tell us what do you think about GeoFi...      Any kind of feedback is highly appreciated..."
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="16sp"
             android:textStyle="italic"
             tools:ignore="HardcodedText,ObsoleteLayoutParam" />
 
@@ -39,10 +41,14 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/editText5"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
             android:ems="10"
             android:gravity="top"
             android:inputType="textMultiLine"
             android:lines="10"
+            android:padding="5dp"
             android:text="Write Your Suggestions"
             android:textColor="@android:color/black"
             tools:ignore="HardcodedText,RtlHardcoded"
@@ -55,14 +61,15 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/TV_1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:layout_marginTop="26dp"
             android:ems="10"
             android:inputType="textEmailAddress"
+
             android:selectAllOnFocus="false"
             android:text="Your Email"
-
             android:textColor="@android:color/black"
-
             android:textStyle="bold|italic"
             tools:ignore="HardcodedText,RtlHardcoded" />
 
@@ -75,6 +82,8 @@
             android:layout_above="@+id/button"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:checked="true"
             android:duplicateParentState="false"
             android:padding="5dp"
@@ -86,17 +95,18 @@
             android:paddingTop="5dp"
             android:text="Would you like an email response?"
             android:textColor="@android:color/black"
-            android:textSize="20sp"
+            android:textSize="18sp"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/checkBox"
+            android:layout_alignEnd="@+id/checkBox"
             android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/checkBox"
-            android:layout_marginBottom="60dp"
+            android:layout_alignRight="@+id/checkBox"
+            android:layout_marginBottom="58dp"
+            android:layout_marginLeft="16dp"
             android:padding="5dp"
             android:paddingEnd="10dp"
             android:paddingStart="10dp"
