@@ -42,7 +42,8 @@
             android:layout_alignRight="@+id/ivGoogleSignIn"
             android:layout_alignStart="@+id/ivGoogleSignIn"
             android:layout_below="@+id/ivGoogleSignIn"
-            android:layout_marginTop="14dp" />
+            android:layout_marginTop="14dp"
+            android:textSize="20sp" />
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/login_button"
@@ -57,7 +58,8 @@
             android:layout_marginTop="14dp"
             android:paddingBottom="12dp"
             android:paddingLeft="10dp"
-            android:paddingTop="12dp" />
+            android:paddingTop="12dp"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView3"
