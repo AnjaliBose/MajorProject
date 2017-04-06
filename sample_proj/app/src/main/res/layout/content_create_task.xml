@@ -10,21 +10,23 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Enter The Task Name"
+        android:text="Enter Your Task Details"
         android:textStyle="bold|italic"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        app:layout_constraintHorizontal_bias="0.0" />
+        tools:layout_constraintRight_creator="1" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -34,128 +36,69 @@
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@+id/editText"
         android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="16dp" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="26dp"
         android:fontFamily="serif"
         android:text="location"
         android:textColor="@color/cardview_dark_background"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="51dp"
-        android:layout_height="53dp"
-        app:srcCompat="@drawable/ic_streetview_black_24dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        android:layout_marginLeft="24dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Saved Place"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginTop="5dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="78dp"
-        android:padding="5dp"
-        android:text="Or"
-        android:textColor="@color/common_google_signin_btn_text_light_pressed"
-        android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/editText"
-        tools:layout_editor_absoluteX="177dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="51dp"
-        android:layout_height="53dp"
-        app:srcCompat="@drawable/ic_map_black_24dp"
-        android:layout_marginRight="24dp"
+        tools:text="Select Location"
+        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="56dp"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Map"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginTop="5dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3"
-        android:layout_marginRight="32dp"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="6dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="6dp"
-        android:text="Alarm"
-        android:textColor="@color/dgts__text_dark"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        tools:layout_editor_absoluteY="219dp"
-        app:layout_constraintLeft_toRightOf="@+id/textView13"
-        android:layout_marginLeft="92dp" />
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reminder When Closer Than 100 m"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:text="Notify When Device Is Within 100m"
         android:textAllCaps="false"
         android:textSize="18sp"
         android:textStyle="bold|italic"
-        tools:layout_editor_absoluteY="286dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.51" />
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="370dp" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="301dp"
-        android:layout_height="45dp"
-        android:text="Create Task"
-        android:layout_marginLeft="40dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="29dp"
+        android:text="Save Task"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="24dp"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="34dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Task Name"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
