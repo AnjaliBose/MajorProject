@@ -64,7 +64,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="26dp"
             android:ems="10"
-            android:hint="your Email"
+            android:hint="Enter Your Email"
 
             android:inputType="textEmailAddress"
             android:selectAllOnFocus="false"
