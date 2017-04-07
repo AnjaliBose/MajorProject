@@ -129,7 +129,7 @@ public class loginactivity extends AppCompatActivity implements View.OnClickList
                 // ...
             }
         });
-
+            // twitter login
         mLoginButton = (TwitterLoginButton) findViewById(R.id.button_twitter_login);
 
         mLoginButton.setCallback(new Callback<TwitterSession>() {

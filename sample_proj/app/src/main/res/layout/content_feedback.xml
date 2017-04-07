@@ -46,13 +46,12 @@
             android:layout_marginTop="5dp"
             android:ems="10"
             android:gravity="top"
+            android:hint="Write Your Suggestions"
             android:inputType="textMultiLine"
             android:lines="10"
             android:padding="5dp"
-            android:text="Write Your Suggestions"
             android:textColor="@android:color/black"
-            tools:ignore="HardcodedText,RtlHardcoded"
-            tools:text="Write Your Suggestions" />
+            tools:ignore="HardcodedText,RtlHardcoded" />
 
         <EditText
             android:id="@+id/editText5"
@@ -65,10 +64,10 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="26dp"
             android:ems="10"
-            android:inputType="textEmailAddress"
+            android:hint="your Email"
 
+            android:inputType="textEmailAddress"
             android:selectAllOnFocus="false"
-            android:text="Your Email"
             android:textColor="@android:color/black"
             android:textStyle="bold|italic"
             tools:ignore="HardcodedText,RtlHardcoded" />
