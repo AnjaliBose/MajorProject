@@ -108,12 +108,13 @@ public class HomeActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_history) {
+            startActivity(new Intent(this, PlaceSelectionActivity.class));
 
         } else if (id == R.id.nav_feed) {
             startActivity(new Intent(this, FeedbackActivity.class));
 
         } else if (id == R.id.nav_share) {
-            startActivity(new Intent(this, SettingsActivity.class));
+
 
         } else if (id == R.id.fab) {
             startActivity(new Intent(this, SettingsActivity.class));

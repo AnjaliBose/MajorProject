@@ -89,4 +89,9 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_place_selection">Map</string>
+    <string name="service_not_available">service not avilable</string>
+    <string name="invalid_lat_long_used">invalid latitude longitude</string>
+    <string name="no_address_found">no address found for the location</string>
+    <string name="address_found">address found</string>
+    <string name="no_geocoder_available">Address can not be retrieved on this device</string>
 </resources>

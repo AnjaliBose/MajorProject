@@ -10,6 +10,7 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -96,6 +97,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="trainedge.sample_proj.CreateTask" />
         </activity>
+
+        <service
+            android:name=".FetchAddressIntentService"
+            android:exported="false"></service>
     </application>
 
 </manifest>
