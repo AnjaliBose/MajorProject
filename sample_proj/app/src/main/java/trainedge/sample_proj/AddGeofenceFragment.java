@@ -74,6 +74,7 @@ public class AddGeofenceFragment extends DialogFragment {
                 dialog.dismiss();
               }
             } else {
+              // error message
               showValidationErrorToast();
             }
           }
