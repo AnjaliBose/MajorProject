@@ -38,8 +38,6 @@ import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
-import twitter4j.TwitterException;
-
 
 public class loginactivity extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
 
@@ -168,8 +166,7 @@ public class loginactivity extends AppCompatActivity implements View.OnClickList
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
             } else {
-                // Google Sign In failed, update UI appropriately
-                // ...
+                Toast.makeText(this, "failed" + result.getStatus().getStatusMessage(), Toast.LENGTH_SHORT).show();
             }
         } else if (clickOn == FACEBOOK) {
             // Pass the activity result back to the Facebook SDK

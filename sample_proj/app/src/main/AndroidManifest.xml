@@ -100,7 +100,10 @@
 
         <service
             android:name=".FetchAddressIntentService"
-            android:exported="false"></service>
+            android:exported="false" />
+
+        <activity android:name=".Dailog_Add_Geofence" />
+        <activity android:name=".AllGeofencesActivity"/>
     </application>
 
 </manifest>
