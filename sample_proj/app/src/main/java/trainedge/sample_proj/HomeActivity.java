@@ -14,10 +14,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CalendarView;
 
+import com.facebook.AccessToken;
+import com.facebook.login.LoginManager;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private CalendarView calendarView;
+    public FirebaseAuth mAuth;
 
 
     @Override
@@ -125,10 +130,17 @@ public class HomeActivity extends AppCompatActivity
 
 
 
-        } else if (id == R.id.fab) {
-            startActivity(new Intent(this, PlaceSelectionActivity.class));
+        } else if (id == R.id.nav_logout) {
+            mAuth.signOut();
+            try{
+                LoginManager.getInstance().logOut();
+                AccessToken.setCurrentAccessToken(null);
+            } catch (Exception ignore){
 
-        }
+            }
+            Intent lgtIntent = new Intent(HomeActivity.this,loginactivity.class);
+            startActivity(lgtIntent);
+            }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

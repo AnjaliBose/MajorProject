@@ -40,6 +40,7 @@ public class AllGeofencesFragment extends Fragment implements AddGeofenceFragmen
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
     }
 
     @Override
@@ -47,6 +48,8 @@ public class AllGeofencesFragment extends Fragment implements AddGeofenceFragmen
         View view = inflater.inflate(R.layout.fragment_all_geofence, container, false);
         viewHolder = new ViewHolder();
         return view;
+
+
     }
 
     @Override

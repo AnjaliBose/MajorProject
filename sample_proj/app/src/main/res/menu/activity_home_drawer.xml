@@ -21,6 +21,10 @@
         android:id="@+id/nav_history"
         android:icon="@drawable/ic_menu_slideshow"
         android:title="History" />
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/ic_settings_power_black_24dp"
+        android:title="Logout" />
     <item android:title="Communication">
         <menu>
             <item
