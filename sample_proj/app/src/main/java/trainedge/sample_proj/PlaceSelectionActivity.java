@@ -7,12 +7,13 @@ import android.content.pm.PackageManager;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
 import android.support.v4.os.ResultReceiver;
 import android.util.Log;
 import android.view.View;
@@ -38,10 +39,15 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
-public class PlaceSelectionActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
+import static trainedge.sample_proj.FetchAddressIntentService.Constants.PACKAGE_NAME;
+
+public class PlaceSelectionActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener, View.OnClickListener {
 
     private static final int REQUEST_LOCATION_PERMISSION = 2312;
     private static final int REQUEST_CHECK_SETTINGS = 9389;
+    public static final String KEY_ADDRESS = PACKAGE_NAME +".address";
+    public static final String KEY_LAT = PACKAGE_NAME +".latitude";
+    public static final String KEY_LNG = PACKAGE_NAME +".longitude";
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
@@ -57,6 +63,8 @@ public class PlaceSelectionActivity extends FragmentActivity implements OnMapRea
     protected boolean mAddressRequested;
     protected String mAddressOutput;
     private ProgressBar pbLoader;
+    private LatLng userSelectedLatLng;
+    private FloatingActionButton fabCon;
 
 
     @Override
@@ -66,7 +74,17 @@ public class PlaceSelectionActivity extends FragmentActivity implements OnMapRea
         tvAddress = (TextView) findViewById(R.id.tvAddress);
         pbLoader = (ProgressBar) findViewById(R.id.pbLoader);
         pbLoader.setVisibility(View.GONE);
+
+        fabCon = (FloatingActionButton) findViewById(R.id.fabConfirm);
+        fabCon.setOnClickListener(this);
+
+
+
+        // Create an instance of GoogleAPIClient.
+        buildGoogleApiClient();
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
@@ -88,8 +106,14 @@ public class PlaceSelectionActivity extends FragmentActivity implements OnMapRea
         mAddressOutput = "";
         updateValuesFromBundle(savedInstanceState);
 
-        // Create an instance of GoogleAPIClient.
-        buildGoogleApiClient();
+
+        Bundle bundle = new Bundle();
+        bundle.putString("edttext", "From Activity");
+// set Fragmentclass Arguments
+        AllGeofencesFragment fragobj = new AllGeofencesFragment();
+        fragobj.setArguments(bundle);
+
+
     }
 
     protected synchronized void buildGoogleApiClient() {
@@ -132,6 +156,8 @@ public class PlaceSelectionActivity extends FragmentActivity implements OnMapRea
     }
 
     private void updateMapUi(LatLng latLng) {
+        userSelectedLatLng = latLng;
+        fabCon.setVisibility(View.VISIBLE);
 
     }
 
@@ -207,6 +233,24 @@ public class PlaceSelectionActivity extends FragmentActivity implements OnMapRea
             pbLoader.setVisibility(ProgressBar.GONE);
         }
     }
+
+
+
+    @Override
+    public void onClick(View v){
+        Intent backToProfileSelection = new Intent(this,AllGeofencesActivity.class);
+        if (userSelectedLatLng !=null){
+            if (!tvAddress.getText().toString().isEmpty()){
+                backToProfileSelection.putExtra(KEY_ADDRESS, tvAddress.getText().toString());
+            }
+            backToProfileSelection.putExtra(KEY_LAT, userSelectedLatLng.latitude);
+            backToProfileSelection.putExtra(KEY_LNG, userSelectedLatLng.longitude);
+            startActivity(backToProfileSelection);
+            finish();
+        }
+    }
+
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {

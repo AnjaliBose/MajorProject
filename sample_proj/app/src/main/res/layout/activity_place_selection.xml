@@ -28,6 +28,19 @@
         android:layout_gravity="right"
         android:layout_marginTop="32dp" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="310dp"
+        android:layout_marginTop="14dp"
+        android:clickable="true"
+        android:tint="@android:color/black"
+        map:backgroundTint="@android:color/white"
+        map:elevation="24dp"
+        map:fabSize="mini"
+        map:srcCompat="@android:drawable/ic_input_add" />
+
 
 </FrameLayout>
 

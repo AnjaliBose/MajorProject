@@ -20,15 +20,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".splash"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".loginactivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -107,12 +98,12 @@
                 android:value="trainedge.sample_proj.CreateTask" />
         </activity>
 
-
         <service
             android:name=".FetchAddressIntentService"
             android:exported="false" />
 
-
+        <activity android:name=".Dailog_Add_Geofence" />
+        <activity android:name=".AllGeofencesActivity"/>
     </application>
 
 </manifest>

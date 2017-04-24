@@ -64,9 +64,9 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="26dp"
             android:ems="10"
-            android:hint="Enter Your Email"
+            android:hint="Enter Your Name"
 
-            android:inputType="textEmailAddress"
+            android:inputType="text|textEmailAddress"
             android:selectAllOnFocus="false"
             android:textColor="@android:color/black"
             android:textStyle="bold|italic"
