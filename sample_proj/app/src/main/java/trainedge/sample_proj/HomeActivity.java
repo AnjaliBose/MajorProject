@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CalendarView;
+import android.widget.TabHost;
 
 import com.facebook.AccessToken;
 import com.facebook.login.LoginManager;
@@ -21,7 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private CalendarView calendarView;
+   // private CalendarView calendarView;
     public FirebaseAuth mAuth;
 
 
@@ -31,7 +32,7 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        calendarView = (CalendarView) findViewById(R.id.calendarView);
+      //  calendarView = (CalendarView) findViewById(R.id.calendarView);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -39,13 +40,35 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                long date = calendarView.getDate();
+             //   long date = calendarView.getDate();
                 Intent intent = new Intent(HomeActivity.this, PlaceSelectionActivity.class);
-                intent.putExtra("trainedge.sample_proj.key_date", date);
-                startActivity(intent);
+              //  intent.putExtra("trainedge.sample_proj.key_date", date);
+               startActivity(intent);
+
 
             }
         });
+        TabHost host = (TabHost)findViewById(R.id.tabHost);
+        host.setup();
+
+        //Tab 1
+        TabHost.TabSpec spec = host.newTabSpec("Tab One");
+        spec.setContent(R.id.tab1);
+        spec.setIndicator("Up Coming Reminder");
+        host.addTab(spec);
+
+        //Tab 2
+        spec = host.newTabSpec("Tab Two");
+        spec.setContent(R.id.tab2);
+        spec.setIndicator("Remaining Reminder");
+        host.addTab(spec);
+
+        //Tab 3
+        spec = host.newTabSpec("Tab Three");
+        spec.setContent(R.id.tab3);
+        spec.setIndicator("Completed Reminder");
+        host.addTab(spec);
+
 
 
 
@@ -115,6 +138,7 @@ public class HomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_history) {
 
+            startActivity(new Intent(this, CreateTask.class));
 
         } else if (id == R.id.nav_feed) {
             startActivity(new Intent(this, FeedbackActivity.class));

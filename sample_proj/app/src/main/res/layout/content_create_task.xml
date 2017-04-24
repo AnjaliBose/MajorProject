@@ -8,11 +8,4 @@
     tools:context="trainedge.sample_proj.CreateTask"
     tools:showIn="@layout/activity_create_task">
 
-    <DatePicker
-        android:id="@+id/datePicker"
-        android:layout_width="296dp"
-        android:layout_height="406dp"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="31dp" />
-
 </android.support.constraint.ConstraintLayout>

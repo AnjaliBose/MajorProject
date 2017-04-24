@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
+
 public class CreateTask extends AppCompatActivity {
 
     @Override
@@ -17,13 +18,6 @@ public class CreateTask extends AppCompatActivity {
         setContentView(R.layout.activity_create_task);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Button button = (Button) findViewById(R.id.button2);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(CreateTask.this, PlaceSelectionActivity.class);
-                startActivity(intent);
-            }
-        });
 
         
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
