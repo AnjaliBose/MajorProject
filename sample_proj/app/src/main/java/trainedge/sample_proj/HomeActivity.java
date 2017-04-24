@@ -40,7 +40,7 @@ public class HomeActivity extends AppCompatActivity
             public void onClick(View view) {
 
                 long date = calendarView.getDate();
-                Intent intent = new Intent(HomeActivity.this, CreateTask.class);
+                Intent intent = new Intent(HomeActivity.this, PlaceSelectionActivity.class);
                 intent.putExtra("trainedge.sample_proj.key_date", date);
                 startActivity(intent);
 
@@ -103,9 +103,8 @@ public class HomeActivity extends AppCompatActivity
 
         if (id == R.id.nav_task) {
             // move too createTask page
-            startActivity(new Intent(this, CreateTask.class));
+
         } else if (id == R.id.nav_view) {
-            startActivity(new Intent(this, PlaceSelectionActivity.class));
 
             // Intent createintend = new Intent(HomeActivity.this,CreateTask.class);
             // startActivity(createintend);
@@ -115,7 +114,7 @@ public class HomeActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_history) {
-            startActivity(new Intent(this, AllGeofencesActivity.class));
+
 
         } else if (id == R.id.nav_feed) {
             startActivity(new Intent(this, FeedbackActivity.class));
