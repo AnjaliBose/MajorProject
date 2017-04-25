@@ -41,7 +41,7 @@ public class HomeActivity extends AppCompatActivity
             public void onClick(View view) {
 
              //   long date = calendarView.getDate();
-                Intent intent = new Intent(HomeActivity.this, PlaceSelectionActivity.class);
+                Intent intent = new Intent(HomeActivity.this, CreateTask.class);
               //  intent.putExtra("trainedge.sample_proj.key_date", date);
                startActivity(intent);
 
