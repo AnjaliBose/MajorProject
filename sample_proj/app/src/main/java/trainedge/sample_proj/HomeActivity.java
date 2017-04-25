@@ -12,7 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CalendarView;
 import android.widget.TabHost;
 
 import com.facebook.AccessToken;
@@ -154,7 +153,7 @@ public class HomeActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_logout) {
-            mAuth.signOut();
+            FirebaseAuth.getInstance().signOut();
             try{
                 LoginManager.getInstance().logOut();
                 AccessToken.setCurrentAccessToken(null);
@@ -163,6 +162,7 @@ public class HomeActivity extends AppCompatActivity
             }
             Intent lgtIntent = new Intent(HomeActivity.this,loginactivity.class);
             startActivity(lgtIntent);
+            finish();
             }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

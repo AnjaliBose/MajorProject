@@ -20,6 +20,7 @@ public class splash extends AppCompatActivity {
         logo = (ImageView) findViewById(R.id.logo);
         final Animation a1= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.animation);
 
+
         Thread mythread = new Thread() {
             @Override
             public void run() {
@@ -27,7 +28,7 @@ public class splash extends AppCompatActivity {
                 try {
                     logo.startAnimation(a1);
                     Thread.sleep(3000);
-                    ;
+
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
