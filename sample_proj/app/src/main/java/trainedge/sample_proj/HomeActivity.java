@@ -113,6 +113,10 @@ public class HomeActivity extends AppCompatActivity
 
             return true;
         }
+        else if (id == R.id.action_profile)
+        {
+            startActivity(new Intent(this, Profileview.class));
+        }
 
         return super.onOptionsItemSelected(item);
     }

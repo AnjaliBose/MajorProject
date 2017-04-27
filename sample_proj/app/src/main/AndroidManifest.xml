@@ -103,7 +103,16 @@
             android:exported="false" />
 
         <activity android:name=".Dailog_Add_Geofence" />
-        <activity android:name=".AllGeofencesActivity"/>
+        <activity android:name=".AllGeofencesActivity" />
+        <activity
+            android:name=".Profileview"
+            android:label="@string/title_activity_profileview"
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="trainedge.sample_proj.HomeActivity" />
+        </activity>
     </application>
 
 </manifest>
