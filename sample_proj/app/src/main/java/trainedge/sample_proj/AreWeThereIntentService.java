@@ -86,7 +86,6 @@ public class AreWeThereIntentService extends IntentService implements TextToSpee
                 }
             }
 
-/*
       // Set the notification text and send the notification
       String contextText = String.format(this.getResources().getString(R.string.Notification_Text), geofenceName);
 
@@ -107,7 +106,6 @@ public class AreWeThereIntentService extends IntentService implements TextToSpee
       notificationManager.notify(0, notification);
 
 
-*/
 
 
             Context context = null;

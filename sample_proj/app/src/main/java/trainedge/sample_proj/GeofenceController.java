@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -78,10 +79,12 @@ public class GeofenceController {
   public void addGeofence(NamedGeofence namedGeofence, GeofenceControllerListener listener) {
     this.namedGeofenceToAdd = namedGeofence;
     this.geofenceToAdd = namedGeofence.geofence();
+
     this.listener = listener;
 
     connectWithCallbacks(connectionAddListener);
   }
+
 
   public void removeGeofences(List<NamedGeofence> namedGeofencesToRemove, GeofenceControllerListener listener) {
     this.namedGeofencesToRemove = namedGeofencesToRemove;
@@ -188,6 +191,7 @@ public class GeofenceController {
           if (status.isSuccess()) {
             saveGeofence();
           } else {
+              Toast.makeText(context, status.getStatusMessage(), Toast.LENGTH_LONG).show();
             Log.e(TAG, "Registering geofence failed: " + status.getStatusMessage() + " : " + status.getStatusCode());
             sendError();
           }
