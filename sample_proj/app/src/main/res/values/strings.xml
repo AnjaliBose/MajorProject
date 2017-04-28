@@ -133,6 +133,7 @@
     <!-- Toast -->
     <string name="Toast.Validation">Please enter valid data for all fields</string>
     <string name="Toast.Error">There was an error. Please try again.</string>
+    <string name="title_activity_profileview">Profileview</string>
 
     <string name="task_geofence_notification_title_template">Task geofence: %1$s</string>
 
