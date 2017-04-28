@@ -25,6 +25,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HomeActivity"
+            android:label="Home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".splash"
@@ -43,10 +44,11 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="trainedge.sample_proj.loginactivity" />
+
         </activity>
         <activity
             android:name=".AboutActivity"
-            android:label="@string/title_activity_about"
+            android:label="About"
             android:parentActivityName=".loginactivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -81,7 +83,12 @@
         </activity>
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" />
+            android:label="@string/title_activity_settings" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="trainedge.sample_proj.HomeActivity" />
+
+        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -107,11 +114,23 @@
             android:exported="false" />
 
         <activity android:name=".Dailog_Add_Geofence" />
-        <activity android:name=".AllGeofencesActivity" />
+        <activity android:name=".AllGeofencesActivity"
+            android:label="Create Task">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="trainedge.sample_proj.HomeActivity" />
+
+        </activity>
 
         <service android:name=".AreWeThereIntentService" />
 
-        <activity android:name=".History"></activity>
+        <activity android:name=".History"
+            android:label="History">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="trainedge.sample_proj.HomeActivity" />
+
+        </activity>
     </application>
 
 </manifest>

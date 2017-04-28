@@ -116,7 +116,7 @@ public class History extends AppCompatActivity implements GoogleApiClient.OnConn
             }
         });
 
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {

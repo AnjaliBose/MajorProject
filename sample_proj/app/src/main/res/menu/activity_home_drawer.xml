@@ -5,7 +5,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_about"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_account_circle_black_24dp"
             android:title="About" />
         <item
             android:id="@+id/nav_view"
@@ -13,18 +13,14 @@
             android:title="View Reminder" />
         <item
             android:id="@+id/nav_task"
-            android:icon="@drawable/ic_mode_edit_black_24dp"
+            android:icon="@drawable/ic_menu_send"
             android:title="Task Share" />
     </group>
 
     <item
         android:id="@+id/nav_history"
-        android:icon="@drawable/ic_menu_slideshow"
+        android:icon="@drawable/ic_history_black_24dp"
         android:title="History" />
-    <item
-        android:id="@+id/nav_logout"
-        android:icon="@drawable/ic_settings_power_black_24dp"
-        android:title="Logout" />
     <item android:title="Communication">
         <menu>
             <item
@@ -35,6 +31,10 @@
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_settings_power_black_24dp"
+                android:title="Logout" />
         </menu>
     </item>
 

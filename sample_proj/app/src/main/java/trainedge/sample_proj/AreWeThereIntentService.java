@@ -133,9 +133,9 @@ public class AreWeThereIntentService extends IntentService implements TextToSpee
             engine.setLanguage(Locale.ENGLISH);
             CharSequence msg = null;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                engine.speak(msg, TextToSpeech.QUEUE_FLUSH, null, null);
+                engine.speak("you have reached your destination", TextToSpeech.QUEUE_FLUSH, null, null);
             } else {
-                engine.speak(String.valueOf(msg), TextToSpeech.QUEUE_FLUSH, null);
+                engine.speak(String.valueOf("you have reached your destination"), TextToSpeech.QUEUE_FLUSH, null);
             }
         }
     }

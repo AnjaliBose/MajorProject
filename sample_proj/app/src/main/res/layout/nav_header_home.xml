@@ -17,7 +17,7 @@
         android:layout_width="81dp"
         android:layout_height="71dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@drawable/yu" />
+        app:srcCompat="@drawable/com_facebook_profile_picture_blank_square" />
 
     <TextView
         android:layout_width="match_parent"

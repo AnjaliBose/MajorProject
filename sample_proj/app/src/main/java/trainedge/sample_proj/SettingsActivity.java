@@ -84,6 +84,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 preference.setSummary(stringValue);
             }
             return true;
+
+
         }
     };
 
@@ -121,6 +123,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupActionBar();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     /**
