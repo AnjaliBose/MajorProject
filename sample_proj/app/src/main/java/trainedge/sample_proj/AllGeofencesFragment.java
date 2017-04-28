@@ -2,9 +2,11 @@ package trainedge.sample_proj;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,12 +18,17 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import static trainedge.sample_proj.PlaceSelectionActivity.KEY_ADDRESS;
+import static trainedge.sample_proj.PlaceSelectionActivity.KEY_LAT;
+import static trainedge.sample_proj.PlaceSelectionActivity.KEY_LNG;
+
 
 /**
  * Created by admin on 20-Apr-17.
  */
 
 public class AllGeofencesFragment extends Fragment implements AddGeofenceFragment.AddGeofenceFragmentListener {
+    public static final int REQUEST_MAP_CODE = 44;
     // region Properties
 
     private ViewHolder viewHolder;
@@ -77,13 +84,33 @@ public class AllGeofencesFragment extends Fragment implements AddGeofenceFragmen
         viewHolder.actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddGeofenceFragment dialogFragment = new AddGeofenceFragment();
+                Intent intent = new Intent(getContext(), PlaceSelectionActivity.class);
+                startActivityForResult(intent, REQUEST_MAP_CODE);
+                /*AddGeofenceFragment dialogFragment = new AddGeofenceFragment();
                 dialogFragment.setListener(AllGeofencesFragment.this);
-                dialogFragment.show(getActivity().getSupportFragmentManager(), "AddGeofenceFragment");
+                dialogFragment.show(getActivity().getSupportFragmentManager(), "AddGeofenceFragment");*/
             }
         });
-
         refresh();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_MAP_CODE) {
+            if (resultCode == AppCompatActivity.RESULT_OK) {
+                Bundle extras = data.getExtras();
+                String address = extras.getString(KEY_ADDRESS);
+                double lat = extras.getDouble(KEY_LAT);
+                double lng = extras.getDouble(KEY_LNG);
+                loadTaskFragment(address,lat,lng);
+            }
+        }
+    }
+
+    private void loadTaskFragment(String address, double lat, double lng) {
+        AddGeofenceFragment dialogFragment = AddGeofenceFragment.newInstance(address,lat,lng);
+        dialogFragment.setListener(AllGeofencesFragment.this);
+        dialogFragment.show(getActivity().getSupportFragmentManager(), "AddGeofenceFragment");
     }
 
     @Override

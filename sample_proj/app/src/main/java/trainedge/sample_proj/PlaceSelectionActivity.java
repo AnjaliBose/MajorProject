@@ -39,15 +39,16 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
+import static trainedge.sample_proj.AllGeofencesFragment.REQUEST_MAP_CODE;
 import static trainedge.sample_proj.FetchAddressIntentService.Constants.PACKAGE_NAME;
 
 public class PlaceSelectionActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener, View.OnClickListener {
 
     private static final int REQUEST_LOCATION_PERMISSION = 2312;
     private static final int REQUEST_CHECK_SETTINGS = 9389;
-    public static final String KEY_ADDRESS = PACKAGE_NAME +".address";
-    public static final String KEY_LAT = PACKAGE_NAME +".latitude";
-    public static final String KEY_LNG = PACKAGE_NAME +".longitude";
+    public static final String KEY_ADDRESS = PACKAGE_NAME + ".address";
+    public static final String KEY_LAT = PACKAGE_NAME + ".latitude";
+    public static final String KEY_LNG = PACKAGE_NAME + ".longitude";
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
@@ -77,7 +78,6 @@ public class PlaceSelectionActivity extends FragmentActivity implements OnMapRea
 
         fabCon = (FloatingActionButton) findViewById(R.id.fabConfirm);
         fabCon.setOnClickListener(this);
-
 
 
         // Create an instance of GoogleAPIClient.
@@ -140,10 +140,10 @@ public class PlaceSelectionActivity extends FragmentActivity implements OnMapRea
     }
 
     private void setMapInteraction() {
-        if (mMap == null) {
+        if (mMap == null || mLastLocation == null) {
             return;
         }
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude()),16));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude()), 16));
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(LatLng latLng) {
@@ -158,7 +158,6 @@ public class PlaceSelectionActivity extends FragmentActivity implements OnMapRea
     private void updateMapUi(LatLng latLng) {
         userSelectedLatLng = latLng;
         fabCon.setVisibility(View.VISIBLE);
-
     }
 
 
@@ -235,21 +234,19 @@ public class PlaceSelectionActivity extends FragmentActivity implements OnMapRea
     }
 
 
-
     @Override
-    public void onClick(View v){
-        Intent backToProfileSelection = new Intent(this,AllGeofencesActivity.class);
-        if (userSelectedLatLng !=null){
-            if (!tvAddress.getText().toString().isEmpty()){
+    public void onClick(View v) {
+        Intent backToProfileSelection = new Intent(this, AllGeofencesActivity.class);
+        if (userSelectedLatLng != null) {
+            if (!tvAddress.getText().toString().isEmpty()) {
                 backToProfileSelection.putExtra(KEY_ADDRESS, tvAddress.getText().toString());
             }
             backToProfileSelection.putExtra(KEY_LAT, userSelectedLatLng.latitude);
             backToProfileSelection.putExtra(KEY_LNG, userSelectedLatLng.longitude);
-            startActivity(backToProfileSelection);
+            setResult(RESULT_OK, backToProfileSelection);
             finish();
         }
     }
-
 
 
     @Override

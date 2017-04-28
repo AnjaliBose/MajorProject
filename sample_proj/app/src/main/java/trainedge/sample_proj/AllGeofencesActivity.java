@@ -2,6 +2,7 @@ package trainedge.sample_proj;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -11,7 +12,7 @@ import static trainedge.sample_proj.PlaceSelectionActivity.KEY_ADDRESS;
 import static trainedge.sample_proj.PlaceSelectionActivity.KEY_LAT;
 import static trainedge.sample_proj.PlaceSelectionActivity.KEY_LNG;
 
-public class AllGeofencesActivity extends ActionBarActivity {
+public class AllGeofencesActivity extends AppCompatActivity {
     private double lat;
     private double lng;
     private String selectedAddress;
@@ -32,15 +33,7 @@ public class AllGeofencesActivity extends ActionBarActivity {
         GeofenceController.getInstance().init(this);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        Bundle extras = getIntent().getExtras();
-        if (extras == null) {
-            Toast.makeText(this, "erroe loading data", Toast.LENGTH_SHORT).show();
-        }
-        selectedAddress = extras.getString(KEY_ADDRESS);
-        lat = extras.getDouble(KEY_LAT);
-        lng = extras.getDouble(KEY_LNG);
     }
-
 
 
 

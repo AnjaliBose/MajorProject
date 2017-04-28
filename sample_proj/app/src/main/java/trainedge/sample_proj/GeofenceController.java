@@ -86,7 +86,6 @@ public class GeofenceController {
   public void removeGeofences(List<NamedGeofence> namedGeofencesToRemove, GeofenceControllerListener listener) {
     this.namedGeofencesToRemove = namedGeofencesToRemove;
     this.listener = listener;
-
     connectWithCallbacks(connectionRemoveListener);
   }
 
@@ -254,7 +253,5 @@ public class GeofenceController {
     void onGeofencesUpdated();
     void onError();
   }
-
   // end region
-
 }
