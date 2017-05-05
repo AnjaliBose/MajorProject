@@ -1,5 +1,7 @@
 package trainedge.sample_proj;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,28 +22,22 @@ public class splash extends AppCompatActivity {
         logo = (ImageView) findViewById(R.id.logo);
         final Animation a1= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.animation);
 
-
-        Thread mythread = new Thread() {
+        logo = (ImageView) findViewById(R.id.logo);
+        logo.animate().setListener(new AnimatorListenerAdapter() {
             @Override
-            public void run() {
-
-                try {
-                    logo.startAnimation(a1);
-                    Thread.sleep(3000);
-
-
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }finally {
-                    Intent abtIntent=new Intent(splash.this,loginactivity.class);
-                    startActivity(abtIntent);
-                    finish();
-                }
-
-
+            public void onAnimationEnd(Animator animation) {
+                Intent i = new Intent(splash.this, HomeActivity.class);
+                startActivity(i);
+                finish();
             }
-        };
+        }).rotationY(1080)
+                .scaleX(75.2f)
+                .scaleY(75.2f)
+                .setDuration(3000)
+                .setStartDelay(100)
+                .start();
 
-        mythread.start();
+
+
     }
 }
