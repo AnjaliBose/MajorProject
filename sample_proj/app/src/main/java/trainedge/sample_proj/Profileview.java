@@ -41,8 +41,8 @@ public class Profileview extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profileview);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+      //  Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+       // setSupportActionBar(toolbar);
 
         getSupportActionBar().setTitle("Profile Info");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -81,14 +81,7 @@ public class Profileview extends AppCompatActivity {
             }
         };
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+       
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

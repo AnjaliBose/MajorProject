@@ -212,6 +212,7 @@ public class HomeActivity extends AppCompatActivity
         else if (id == R.id.action_profile)
         {
             startActivity(new Intent(this, Profileview.class));
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -227,6 +228,8 @@ public class HomeActivity extends AppCompatActivity
             // move too createTask page
 
         } else if (id == R.id.nav_view) {
+            startActivity(new Intent(this, CreateTask.class));
+
 
             // Intent createintend = new Intent(HomeActivity.this,CreateTask.class);
             // startActivity(createintend);
