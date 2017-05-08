@@ -127,7 +127,7 @@ public class GeofenceService extends Service implements GoogleApiClient.Connecti
 
         geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
             @Override
-            public void onKeyEntered(String key, GeoLocation location) {
+            public void onKeyEntered(final String key, GeoLocation location) {
                 final String msgToDisplay = format("you have to perform task %s  at his location", key, 0);
                 DatabaseReference tasks = FirebaseDatabase.getInstance().getReference("tasks").child(uid).child(key);
                 tasks.child("status").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -136,7 +136,7 @@ public class GeofenceService extends Service implements GoogleApiClient.Connecti
                         try {
                             if (!dataSnapshot.getValue(Boolean.class)) {
                                 TaskGeofenceNotification.notify(GeofenceService.this, msgToDisplay, 1);
-                                launchTTS(msgToDisplay);
+                                launchTTS(msgToDisplay,key);
 
                             }
                         } catch (Exception e) {
@@ -176,7 +176,7 @@ public class GeofenceService extends Service implements GoogleApiClient.Connecti
 
     TextToSpeech engine;
 
-    private void launchTTS(String msgToDisplay) {
+    private void launchTTS(String msgToDisplay,String key) {
         engine = new TextToSpeech(getApplicationContext(), this);
         speak = 0;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -190,6 +190,7 @@ public class GeofenceService extends Service implements GoogleApiClient.Connecti
         } else {
             Intent intent = new Intent(getApplicationContext(), CreateTask.class);
             intent.putExtra(CreateTask.TEXT, msgToDisplay);
+            intent.putExtra(CreateTask.KEY, key);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }

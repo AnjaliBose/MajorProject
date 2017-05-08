@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -54,6 +55,7 @@ public class HomeActivity extends AppCompatActivity
     private String getuid;
     private PendingIntent pIntent;
     private AlarmManager alarm;
+    private LinearLayout lBlank;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +76,8 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        lBlank = (LinearLayout) findViewById(R.id.lblank);
+        lBlank.setVisibility(View.GONE);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
 
@@ -103,6 +107,7 @@ public class HomeActivity extends AppCompatActivity
 
         //creating blank list in memory
         commentList = new ArrayList<>();
+
 
         //recyclerview obj
 
@@ -145,9 +150,12 @@ public class HomeActivity extends AppCompatActivity
                             position++;
                         }
                     }
-                    Toast.makeText(HomeActivity.this, "data loaded", Toast.LENGTH_SHORT).show();
+                    if (commentList.size() == 0) {
+                        lBlank.setVisibility(View.VISIBLE);
+                    }
 
                 } else {
+                    lBlank.setVisibility(View.VISIBLE);
                     Toast.makeText(HomeActivity.this, "No Tasks", Toast.LENGTH_SHORT).show();
                 }
                 if (dialog.isShowing()) {
@@ -218,7 +226,7 @@ public class HomeActivity extends AppCompatActivity
             startActivity(new Intent(this, SettingsActivity.class));
 
             return true;
-        } else if (id == R.id.action_profile) {
+        } else if (id == R.id.nav_profile) {
             startActivity(new Intent(this, Profileview.class));
             return true;
         }
@@ -232,7 +240,9 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_task) {
+        if (id == R.id.nav_profile) {
+            startActivity(new Intent(this, Profileview.class));
+
             // move too createTask page
 
         } else if (id == R.id.nav_view) {
@@ -295,7 +305,6 @@ public class HomeActivity extends AppCompatActivity
                 60000 * 30, pIntent);
 
     }
-
 
 
 }

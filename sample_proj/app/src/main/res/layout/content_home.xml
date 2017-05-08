@@ -17,8 +17,8 @@
         android:layout_height="447dp"
         android:orientation="vertical"
         tools:context="trainedge.sample_proj.HomeActivity"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
         <FrameLayout
             android:id="@+id/content"
@@ -26,10 +26,30 @@
             android:layout_height="0dp"
             android:layout_weight="1">
 
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvComments"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:id="@+id/lblank"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginTop="200dp"
+                    android:layout_weight="1"
+                    android:text="You have nat create any Geofence yet. Tap to plus button to be create one"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
         </FrameLayout>
 
     </LinearLayout>

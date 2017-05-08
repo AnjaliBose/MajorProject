@@ -141,5 +141,6 @@
     <string name="action_share">Share</string>
     <string name="action_reply">Reply</string>
     <string name="alertMsg">Please enable your GPS and TTS settigs in app settings to use app properply</string>
+    <string name="tution_help">Instructions For User: \n1. Tap the below button to open map \n2. PRESS AND HOLD to select location \n3. Click Add button to fill task detail \n4. Enter Geofence Radius range(0.1 to 0.5km) \n5. Select Notification Tone and Date \n6. Click add button to Create task</string>
 
 </resources>

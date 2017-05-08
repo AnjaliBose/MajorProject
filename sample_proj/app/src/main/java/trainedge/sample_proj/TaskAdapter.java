@@ -83,15 +83,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskHolder> {
                 if (databaseError == null) {
                     Toast.makeText(holder.rlContainer.getContext(), "Removed", Toast.LENGTH_SHORT).show();
                     holder.pbStatus.setVisibility(View.GONE);
-                    removeGeofence();
                 }
             }
         });
         georef2.child(model.getKey()).removeValue();
-    }
-
-    private void removeGeofence() {
-
     }
 
     private void updateTask(TaskModel model, final TaskHolder holder) {

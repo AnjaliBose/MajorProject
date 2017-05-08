@@ -5,10 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="trainedge.sample_proj.Fragment_all_geofenceActivity"
-    tools:showIn="@layout/activity_fragment_all_geofence"
+    tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:showIn="@layout/activity_fragment_all_geofence">
 
 
     <FrameLayout
@@ -34,14 +33,16 @@
 
             <TextView
                 android:id="@+id/textView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginTop="200dp"
+                android:layout_marginTop="100dp"
                 android:layout_weight="1"
-                android:text="You have nat create any Geofence yet. Tap to plus button to be create one"
-                android:textSize="20sp" />
+                android:text="@string/tution_help"
+                android:textAlignment="textStart"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </FrameLayout>
