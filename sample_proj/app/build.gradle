@@ -51,6 +51,8 @@ dependencies {
     compile 'jp.wasabeef:recyclerview-animators:2.2.0'
     compile 'com.android.support:recyclerview-v7:25.1.0'
     compile 'com.firebaseui:firebase-ui-database:1.1.1'
+    compile 'com.firebase:geofire-android:2.1.1'
+    compile 'com.firebase:geofire-java:2.1.1'
     testCompile 'junit:junit:4.12'
 
     compile 'com.android.support:multidex:1.0.1'

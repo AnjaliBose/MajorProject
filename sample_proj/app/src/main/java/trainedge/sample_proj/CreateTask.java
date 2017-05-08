@@ -1,54 +1,70 @@
 package trainedge.sample_proj;
 
-import android.content.Intent;
+import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.widget.Button;
-import android.widget.TabHost;
 import android.widget.TextView;
 
-public class CreateTask extends AppCompatActivity {
+import java.util.Locale;
 
-    private TextView txtv;
+public class CreateTask extends Activity implements
+        TextToSpeech.OnInitListener {
+
+    public static final String TEXT = "trainedge.sample_proj.text";
+    /**
+     * Called when the activity is first created.
+     */
+    private TextToSpeech tts;
+    private Button btnSpeak;
+    private TextView txtText;
+    private String text;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_task);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        text = getIntent().getStringExtra(TEXT);
+        tts = new TextToSpeech(this, this);
+        txtText = (TextView) findViewById(R.id.txtText);
+    }
 
+    @Override
+    public void onDestroy() {
+        // Don't forget to shutdown tts!
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+        }
+        super.onDestroy();
+    }
 
+    @Override
+    public void onInit(int status) {
+        if (status == TextToSpeech.SUCCESS) {
+            int result = tts.setLanguage(Locale.US);
+            if (result == TextToSpeech.LANG_MISSING_DATA
+                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
 
-        TabHost host = (TabHost)findViewById(R.id.tabHost);
-        host.setup();
+            } else {
+                speakOut();
+            }
 
-        //Tab 1
-        TabHost.TabSpec spec = host.newTabSpec("Tab One");
-        spec.setContent(R.id.tab1);
-        spec.setIndicator("Tab One");
-        host.addTab(spec);
+        } else {
+            Log.e("TTS", "Initilization Failed!");
+        }
 
-        //Tab 2
-        spec = host.newTabSpec("Tab Two");
-        spec.setContent(R.id.tab2);
-        spec.setIndicator("Tab Two");
-        host.addTab(spec);
+    }
 
-        //Tab 3
-        spec = host.newTabSpec("Tab Three");
-        spec.setContent(R.id.tab3);
-        spec.setIndicator("Tab Three");
-        host.addTab(spec);
+    private void speakOut() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "id1");
+        } else {
 
-
-
-
-       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+        }
     }
 }
 

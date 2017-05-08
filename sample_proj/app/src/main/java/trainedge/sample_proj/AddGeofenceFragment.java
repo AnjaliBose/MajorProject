@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +20,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.geofire.GeoFire;
+import com.firebase.geofire.GeoLocation;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -120,14 +121,6 @@ public class AddGeofenceFragment extends DialogFragment {
                     @Override
                     public void onClick(View view) {
                         if (dataIsValid()) {
-                            NamedGeofence geofence = new NamedGeofence();
-                            geofence.name = getViewHolder().taskNameEditText.getText().toString();
-                            geofence.address = address;
-                            geofence.latitude = Double.parseDouble(getViewHolder().latitudeEditText.getText().toString());
-                            geofence.longitude = Double.parseDouble(getViewHolder().longitudeEditText.getText().toString());
-                            geofence.radius = Float.parseFloat(getViewHolder().radiusEditText.getText().toString()) * 1000.0f;
-                            geofence.ringtone = chosenRingtone;
-
                             // upload to cloud
                             uploadtoFirebase(
                                     FirebaseAuth.getInstance().getCurrentUser().getUid(),
@@ -140,10 +133,6 @@ public class AddGeofenceFragment extends DialogFragment {
                                     viewHolder.dateEditText.getText().toString()
                             );
 
-                            if (listener != null) {
-                                listener.onDialogPositiveClick(AddGeofenceFragment.this, geofence);
-                                dialog.dismiss();
-                            }
                         } else {
                             // error message
                             showValidationErrorToast();
@@ -158,7 +147,7 @@ public class AddGeofenceFragment extends DialogFragment {
         return dialog;
     }
 
-    private void uploadtoFirebase(String uid, String taskName, String address, double lat, double lng, float radius, String chosenRingtone, String dateStr) {
+    private void uploadtoFirebase(String uid, final String taskName, String address, double lat, double lng, float radius, String chosenRingtone, String dateStr) {
 
         Map<String, Object> map = new HashMap<>();
         map.put("name", taskName);
@@ -169,10 +158,31 @@ public class AddGeofenceFragment extends DialogFragment {
         map.put("ringtone", chosenRingtone);
         map.put("date", dateStr);
         map.put("status", false);
-        FirebaseDatabase.getInstance().getReference("tasks").child(uid).push().setValue(map, new DatabaseReference.CompletionListener() {
+        final DatabaseReference tasks = FirebaseDatabase.getInstance().getReference("tasks").child(uid);
+        tasks.child(taskName).setValue(map, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "setting up geofence", Toast.LENGTH_SHORT).show();
+                createTaskGeofence(tasks,taskName);
+            }
+        });
+    }
+
+    private void createTaskGeofence(DatabaseReference tasks, String taskName) {
+        DatabaseReference taskGeofence = tasks.child("geofire");
+        GeoFire geoFire = new GeoFire(taskGeofence);
+        geoFire.setLocation(taskName, new GeoLocation(lat, lng), new GeoFire.CompletionListener() {
+            @Override
+            public void onComplete(String key, DatabaseError error) {
+                if (error != null) {
+                    Toast.makeText(getActivity(), "There was an error saving the location to GeoFire: " + error, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), "success -> tasks created", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), HomeActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
             }
         });
     }

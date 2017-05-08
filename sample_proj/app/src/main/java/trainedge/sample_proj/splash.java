@@ -20,13 +20,15 @@ public class splash extends AppCompatActivity {
 
 
         logo = (ImageView) findViewById(R.id.logo);
-        final Animation a1= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.animation);
+        final Animation a1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation);
 
         logo = (ImageView) findViewById(R.id.logo);
         logo.animate().setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                Intent i = new Intent(splash.this, HomeActivity.class);
+
+
+                Intent i = new Intent(splash.this, loginactivity.class);
                 startActivity(i);
                 finish();
             }
@@ -36,7 +38,6 @@ public class splash extends AppCompatActivity {
                 .setDuration(3000)
                 .setStartDelay(100)
                 .start();
-
 
 
     }

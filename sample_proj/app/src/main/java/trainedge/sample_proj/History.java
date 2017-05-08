@@ -91,6 +91,9 @@ public class History extends AppCompatActivity implements GoogleApiClient.OnConn
                 commentList.clear();
                 if (dataSnapshot.hasChildren()) { //tab
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // datasnapshot.getChildren().iter
+                        if (snapshot.getKey().equals("geofire")) {
+                            continue;
+                        }
                         if (snapshot.child("status").getValue(Boolean.class)) {
                             commentList.add(new TaskModel(snapshot));
                             adapter.notifyItemInserted(position);

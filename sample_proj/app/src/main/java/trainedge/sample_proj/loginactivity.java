@@ -23,9 +23,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -86,10 +84,14 @@ public class loginactivity extends AppCompatActivity implements View.OnClickList
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
+                    Intent intent = new Intent(loginactivity.this, GeofenceService.class);
+                    startService(new Intent(loginactivity.this, GeofenceService.class));
+
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     Intent Home = new Intent(loginactivity.this, HomeActivity.class);
                     startActivity(Home);
                     finish();
+
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");

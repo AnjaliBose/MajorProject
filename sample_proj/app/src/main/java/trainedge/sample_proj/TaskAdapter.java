@@ -4,21 +4,16 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -79,7 +74,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskHolder> {
     private void removeTask(TaskModel model, final TaskHolder holder) {
         int position = holder.getAdapterPosition();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("tasks").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        DatabaseReference georef2 = FirebaseDatabase.getInstance().getReference("tasks").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("geofire");
         holder.pbStatus.setVisibility(View.VISIBLE);
+
         ref.child(model.getKey()).removeValue(new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
@@ -90,6 +87,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskHolder> {
                 }
             }
         });
+        georef2.child(model.getKey()).removeValue();
     }
 
     private void removeGeofence() {

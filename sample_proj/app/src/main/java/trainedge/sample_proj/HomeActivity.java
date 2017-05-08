@@ -1,6 +1,9 @@
 package trainedge.sample_proj;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,7 +26,6 @@ import android.widget.Toast;
 import com.facebook.AccessToken;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.Auth;
-
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -50,6 +52,8 @@ public class HomeActivity extends AppCompatActivity
     private DatabaseReference dbRef;
     List<TaskModel> commentList;
     private String getuid;
+    private PendingIntent pIntent;
+    private AlarmManager alarm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +99,6 @@ public class HomeActivity extends AppCompatActivity
         dbInstance = FirebaseDatabase.getInstance();
         getuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        dbRef = dbInstance.getReference("tasks").child(getuid);
         //dbRef = dbInstance.getReference("comments").child(uid);
 
         //creating blank list in memory
@@ -122,6 +125,8 @@ public class HomeActivity extends AppCompatActivity
         dialog.setMessage("please wait");
         dialog.setCancelable(false);
         dialog.show();
+        dbRef = dbInstance.getReference("tasks").child(getuid);
+
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -129,7 +134,11 @@ public class HomeActivity extends AppCompatActivity
                 int position = 0;
                 commentList.clear();
                 if (dataSnapshot.hasChildren()) { //tab
+
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // datasnapshot.getChildren().iter
+                        if (snapshot.getKey().equals("geofire")) {
+                            continue;
+                        }
                         if (!snapshot.child("status").getValue(Boolean.class)) {
                             commentList.add(new TaskModel(snapshot));
                             adapter.notifyItemInserted(position);
@@ -139,7 +148,7 @@ public class HomeActivity extends AppCompatActivity
                     Toast.makeText(HomeActivity.this, "data loaded", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    Toast.makeText(HomeActivity.this, "No comments", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomeActivity.this, "No Tasks", Toast.LENGTH_SHORT).show();
                 }
                 if (dialog.isShowing()) {
                     dialog.dismiss();
@@ -154,6 +163,7 @@ public class HomeActivity extends AppCompatActivity
                 }
             }
         });
+        scheduleAlarm();
     }
 
 
@@ -208,9 +218,7 @@ public class HomeActivity extends AppCompatActivity
             startActivity(new Intent(this, SettingsActivity.class));
 
             return true;
-        }
-        else if (id == R.id.action_profile)
-        {
+        } else if (id == R.id.action_profile) {
             startActivity(new Intent(this, Profileview.class));
             return true;
         }
@@ -271,4 +279,23 @@ public class HomeActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void scheduleAlarm() {
+        // Construct an intent that will execute the AlarmReceiver
+        Intent intent = new Intent(getApplicationContext(), Timerservice.class);
+        // Create a PendingIntent to be triggered when the alarm goes off
+        pIntent = PendingIntent.getBroadcast(this, Timerservice.REQUEST_CODE,
+                intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        // Setup periodic alarm every 5 seconds
+        long firstMillis = System.currentTimeMillis(); // alarm is set right away
+        alarm = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        // First parameter is the type: ELAPSED_REALTIME, ELAPSED_REALTIME_WAKEUP, RTC_WAKEUP
+        // Interval can be INTERVAL_FIFTEEN_MINUTES, INTERVAL_HALF_HOUR, INTERVAL_HOUR, INTERVAL_DAY
+        alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, firstMillis,
+                60000 * 30, pIntent);
+
+    }
+
+
+
 }
